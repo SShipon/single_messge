@@ -1,4 +1,5 @@
 import React from 'react'
+import SingleMessage from './SingleMessage'
 
 const Layout = () => {
   return (
@@ -28,14 +29,7 @@ const Layout = () => {
         <div className='px-3 h-12 flex items-center shadow-md'>general</div>
         <div className='p-3 flex-1 overflow-y-scroll space-y-4'>
           {[...Array(40)].map((_, i) => (
-            <p>
-              Message: {i}, Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Amet pariatur facere quod illo, numquam magni velit deleniti
-              maiores corporis quia veniam quas vitae veritatis animi. Est, hic
-              totam quae ullam iusto id maiores labore ea exercitationem vel
-              sint vitae harum nemo vero sed asperiores qui provident officiis,
-              fugit amet voluptatibus.
-            </p>
+            <SingleMessage i={i} />
           ))}
         </div>
       </div>
