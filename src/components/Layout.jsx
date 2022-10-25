@@ -1,38 +1,61 @@
 import React from 'react'
-import SingleMessage from './SingleMessage'
+import { Link, Outlet, useLocation } from 'react-router-dom'
 
 const Layout = () => {
+  const location = useLocation()
+  console.log(location.pathname)
   return (
     <div className='flex text-gray-100 h-screen'>
       <div className='bg-gray-900 p-3 space-y-2 overflow-y-scroll'>
-        <div className='bg-gray-700 text-gray-100 hover:bg-brand hover:text-white transition-all duration-200 hover:rounded-2xl w-12 h-12 rounded-3xl flex justify-center items-center'>
-          <DiscordIcon className='w-7 h-5' />
+        <div>
+          <div className='relative group'>
+            <div className='flex items-center h-full absolute -left-3'>
+              <div
+                className={`${
+                  location.pathname === '/'
+                    ? 'h-10'
+                    : 'h-5 scale-0 opacity-0 group-hover:scale-100  group-hover:opacity-100 '
+                } w-1  bg-white rounded-r transition-all duration-200 origin-left`}
+              />
+            </div>
+            <Link
+              to='/'
+              className={`${
+                location.pathname === '/'
+                  ? 'bg-brand text-white rounded-2xl'
+                  : 'text-gray-100 bg-gray-700 group-hover:bg-brand group-hover:text-white group-hover:rounded-2xl rounded-3xl'
+              }   transition-all duration-200  w-12 h-12  flex justify-center items-center group-active:translate-y-px`}
+            >
+              <DiscordIcon className='w-7 h-5' />
+            </Link>
+          </div>
         </div>
         {[...Array(40)].map((_, i) => (
-          <div className='bg-gray-700 text-gray-800 w-12 h-12 rounded-full flex justify-center items-center'>
-            {i}
+          <div className='relative group'>
+            <div className='flex items-center h-full absolute -left-3'>
+              <div
+                className={`${
+                  location.pathname === `/server/${i}`
+                    ? 'h-10'
+                    : 'h-5 scale-0 opacity-0 group-hover:scale-100  group-hover:opacity-100 '
+                } w-1  bg-white rounded-r transition-all duration-200 origin-left`}
+              />
+            </div>
+            <Link
+              to={`server/${i}`}
+              key={i}
+              className={`${
+                location.pathname === `/server/${i}`
+                  ? 'bg-brand text-white rounded-2xl'
+                  : 'text-gray-100 bg-gray-700 group-hover:bg-brand group-hover:text-white group-hover:rounded-2xl rounded-3xl'
+              }   transition-all duration-200  w-12 h-12  flex justify-center items-center group-active:translate-y-px`}
+            >
+              {i}
+            </Link>
           </div>
         ))}
       </div>
-      <div className='bg-gray-800 w-60 flex flex-col'>
-        <div className='px-3 h-12 flex items-center shadow-md flex-shrink-0'>
-          Tailwind CSS
-        </div>
-        <div className='text-gray-300 p-3 flex-1 overflow-y-scroll'>
-          <p className='text-white'>Channel (unread)</p>
-          {[...Array(40)].map((_, i) => (
-            <p>Channel: {i}</p>
-          ))}
-        </div>
-      </div>
-      <div className='bg-gray-700 flex-1 flex flex-col'>
-        <div className='px-3 h-12 flex items-center shadow-md'>general</div>
-        <div className='p-3 flex-1 overflow-y-scroll space-y-4'>
-          {[...Array(40)].map((_, i) => (
-            <SingleMessage i={i} />
-          ))}
-        </div>
-      </div>
+      <Outlet />
     </div>
   )
 }
