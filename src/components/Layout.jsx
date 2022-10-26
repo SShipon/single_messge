@@ -10,6 +10,8 @@ const Layout = () => {
         <NavLink to='/'>
           <DiscordIcon className='w-7 h-5' />
         </NavLink>
+
+        <hr className='border-t-white/[.06] border-t-2 rounded mx-2' />
         {/* {[...Array(40)].map((_, i) => (
           <NavLink>
             <img src='' alt='' />
