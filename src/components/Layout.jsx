@@ -2,6 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import DiscordIcon from '../assets/DiscordLogo'
 import NavLink from './NavLink'
+import phLogo from '../assets/logos/ph.png'
 
 const Layout = () => {
   return (
@@ -12,11 +13,11 @@ const Layout = () => {
         </NavLink>
 
         <hr className='border-t-white/[.06] border-t-2 rounded mx-2' />
-        {/* {[...Array(40)].map((_, i) => (
-          <NavLink>
-            <img src='' alt='' />
+        {[...Array(40)].map((_, i) => (
+          <NavLink to={`/server/${i}`}>
+            <img src={phLogo} alt='' />
           </NavLink>
-        ))} */}
+        ))}
       </div>
       <Outlet />
     </div>
