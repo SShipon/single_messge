@@ -3,6 +3,14 @@ import { Outlet } from 'react-router-dom'
 import DiscordIcon from '../assets/DiscordLogo'
 import NavLink from './NavLink'
 import phLogo from '../assets/logos/ph.png'
+import tailwindLogo from '../assets/logos/tailwind.svg.png'
+import pythonLogo from '../assets/logos/python.jpg'
+
+let servers = [
+  { id: '1', img: phLogo },
+  { id: '2', img: pythonLogo },
+  { id: '3', img: tailwindLogo },
+]
 
 const Layout = () => {
   return (
@@ -13,9 +21,9 @@ const Layout = () => {
         </NavLink>
 
         <hr className='border-t-white/[.06] border-t-2 rounded mx-2' />
-        {[...Array(40)].map((_, i) => (
-          <NavLink to={`/server/${i}`}>
-            <img src={phLogo} alt='' />
+        {servers.map(({ img, id }) => (
+          <NavLink key={id} to={`/server/${id}`}>
+            <img src={img} alt='' />
           </NavLink>
         ))}
       </div>
