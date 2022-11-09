@@ -13,7 +13,7 @@ const SingleMessage = ({ i }) => {
         <div>
           <p className='flex items-baseline'>
             <span className='text-green-500 mr-2 text-sm font-medium cursor-pointer'>
-              shakilatik
+              Sujon 
             </span>
             <span className='text-xs text-gray-500'>21/10/2022</span>
           </p>
